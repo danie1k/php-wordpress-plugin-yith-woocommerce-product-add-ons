@@ -1440,15 +1440,13 @@ if ( ! class_exists( 'YITH_WAPO_Frontend' ) ) {
 
 				$types_total_price = $this->get_total_add_ons_price( $cart_item );
 
-				// WooCommerce Currency Switcher
-				if ( class_exists( 'WOOCS' ) ) {
-					global $WOOCS;
-					$currencies        = $WOOCS->get_currencies();
-					$conversion_rate   = $currencies[ $WOOCS->current_currency ]['rate'];
-					$types_total_price = $types_total_price / $conversion_rate;
-				}
+				if ( defined('YWCRBP_PREMIUM') ){
 
-				if ( defined( 'YWCRBP_PREMIUM' ) ) {
+					// WooCommerce Currency Switcher
+					if ( class_exists( 'WOOCS' ) ) {
+						global $WOOCS;
+						$types_total_price = $WOOCS->woocs_exchange_value(floatval( $types_total_price));
+					}
 
 					// $cart_item['data']->price = $cart_item['data']->get_price() + $types_total_price;
 					// Fix WC 3.0.x compatibility
