@@ -1,0 +1,9 @@
+{
+  "name": "danie1k/php-wordpress-yith-woocommerce-product-add-ons",
+  "version": "1.5.23.3",
+  "require": {
+    "composer/installers": "~1.0"
+  },
+  "type": "wordpress-plugin",
+  "homepage": "https://wordpress.org/plugins/yith-woocommerce-product-add-ons/"
+}
